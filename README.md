@@ -2,7 +2,7 @@
 
 A full-stack GenAI workbench that lets hardware engineers interrogate reliability test data in plain language.
 
-TestLens works over drive-fleet SMART telemetry and the failure-prediction scores computed on it. An engineer asks a question; an LLM agent answers it by calling tools that query the test data and the prediction scores, and returns its answer together with the query results it drew on.
+TestLens works over drive-fleet SMART telemetry and the failure-prediction scores computed on it by [FailSight](https://github.com/coderloganli/failsight). An engineer asks a question; an LLM agent answers it by calling tools that query the test data and the prediction scores, and returns its answer together with the query results it drew on.
 
 ## Architecture
 
