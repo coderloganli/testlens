@@ -1,0 +1,42 @@
+image:
+  registry: ""          # e.g. 123456789012.dkr.ecr.us-east-1.amazonaws.com
+  tag: ""               # defaults to the chart appVersion
+  pullPolicy: IfNotPresent
+
+api:
+  repository: testlens-api
+  replicas: 2
+  port: 8000
+  resources:
+    requests: { cpu: 250m, memory: 256Mi }
+    limits: { memory: 512Mi }
+  env:
+    LLM_PROVIDER: anthropic
+    ANTHROPIC_MODEL: claude-opus-5-5
+    ANTHROPIC_EFFORT: medium
+    LOG_JSON: "true"
+    OTEL_SERVICE_NAME: testlens-api
+    OTEL_EXPORTER_OTLP_ENDPOINT: ""   # e.g. http://otel-collector.observability:4318
+
+frontend:
+  repository: testlens-frontend
+  replicas: 2
+  port: 3000
+  resources:
+    requests: { cpu: 100m, memory: 128Mi }
+    limits: { memory: 256Mi }
+
+# Pre-existing Secret holding DATABASE_URL, REDIS_URL and ANTHROPIC_API_KEY
+# (for example synced from AWS Secrets Manager). Never commit its values.
+existingSecret: testlens
+
+migrations:
+  enabled: true
+
+ingress:
+  enabled: true
+  className: alb
+  host: ""
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip

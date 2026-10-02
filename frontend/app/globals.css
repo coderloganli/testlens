@@ -1,0 +1,114 @@
+:root {
+  --fg: #1d2330;
+  --muted: #667085;
+  --border: #d0d5dd;
+  --accent: #2858c8;
+  --error: #b42318;
+  --bg: #ffffff;
+  --panel: #f6f7f9;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e6e8ec;
+    --muted: #98a2b3;
+    --border: #344054;
+    --accent: #7a9cf0;
+    --error: #f97066;
+    --bg: #12151c;
+    --panel: #1b1f29;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.5 system-ui, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 96px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.exchange {
+  border-top: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.question {
+  font-weight: 600;
+}
+
+.error {
+  color: var(--error);
+}
+
+.tool-call {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+
+button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
